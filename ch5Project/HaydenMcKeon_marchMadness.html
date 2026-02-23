@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>March Madness</title>
+
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 900px;
+    border: 2px solid black;
+  }
+
+  .box {
+    border: 1px solid black;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+
+  .day {
+    border: 1px solid black;
+    padding: 10px;
+  }
+
+  /* Highlight from March 16 onward */
+  .day:nth-child(n+16) {
+    background-color: gold;
+  }
+
+  /* Fade after March 31 */
+  .day:nth-child(n+32) {
+    background-color: transparent;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="box title">MARCH<br>MADNESS</div>
+
+  <div class="box">
+    <h2>March</h2>
+    <div class="calendar">
+      <div class="day">Sun</div><div class="day">Mon</div><div class="day">Tue</div>
+      <div class="day">Wed</div><div class="day">Thu</div><div class="day">Fri</div><div class="day">Sat</div>
+
+      <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div>
+      <div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div>
+      <div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div>
+      <div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day">26</div><div class="day">27</div><div class="day">28</div>
+      <div class="day">29</div><div class="day">30</div><div class="day">31</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2>The Tigers</h2>
+    <p>
+      Hail to thee our alma mater,<br>
+      strong and proud in gold and blue.<br>
+      Lift the banner ever skyward,<br>
+      we will always stand for you.
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
