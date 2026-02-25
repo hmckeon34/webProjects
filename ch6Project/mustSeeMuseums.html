@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Must-See Museums</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .city-links a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: blue;
+      padding: 4px 6px;
+    }
+
+    .city-links a:hover {
+      background-color: silver;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      row-gap: 20px;
+      column-gap: 20px;
+      max-width: 800px;
+    }
+
+    .city {
+      font-weight: bold;
+    }
+
+    .places a {
+      display: block;
+      text-decoration: none;
+      color: blue;
+      padding: 3px 5px;
+      width: fit-content;
+    }
+
+    .places a:hover {
+      background-color: silver;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Must-See Museums</h1>
+
+  <div class="city-links">
+    <a href="#newyork">New York</a> |
+    <a href="#chicago">Chicago</a> |
+    <a href="#kansascity">Kansas City</a>
+  </div>
+
+  <img src="met.jpeg" alt="Metropolitan Museum of Art">
+
+  <div class="grid">
+    <div class="city" id="newyork">New York:</div>
+    <div class="places">
+      <a href="https://www.metmuseum.org" target="_blank">The Met</a>
+      <a href="https://www.moma.org" target="_blank">MoMA</a>
+    </div>
+
+    <div class="city" id="chicago">Chicago:</div>
+    <div class="places">
+      <a href="https://www.artic.edu" target="_blank">Art Institute of Chicago</a>
+      <a href="https://www.fieldmuseum.org" target="_blank">Field Museum</a>
+    </div>
+
+    <div class="city" id="kansascity">Kansas City:</div>
+    <div class="places">
+      <a href="https://nelson-atkins.org" target="_blank">Nelson-Atkins Museum of Art</a>
+      <a href="https://www.unionstation.org/sciencecity/" target="_blank">Science City at Union Station</a>
+    </div>
+  </div>
+
+</body>
+</html>
