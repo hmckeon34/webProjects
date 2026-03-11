@@ -2,52 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="author" content="John Dean">
 <title>Area Description</title>
 <link rel="stylesheet" href="../library/microgrid.css">
-<style>
-  /* Existing Styles */
-  .downtown {font-family: Helvetica, sans-serif;}
-  .east-lawrence {font-family: "Times New Roman", serif;}
-  .west-lawrence {
-    font-family: cursive;
-    line-height: 1.2em;
-  }
-  .ku {
-    font-family: monospace;
-    font-weight: bold;
-  }
-  span.title {font-variant: small-caps;}
-  span.opportunity {font-style: italic;}
-
-  /* Chapter 7 Case Study Grid Styles */
-  #grid {
-    display: inline-grid;
-    grid-template-columns: repeat(2, auto);
-    margin: 10px;
-  }
-  .center {
-    display: flex; 
-    justify-content: center;
-  }
-  .street-map {
-    width: 340px; 
-    height: 320px; 
-    margin: 10px;
-  }
-  iframe {
-    width: 340px; 
-    height: 340px; 
-    margin: 10px;
-    border: 0; 
-    overflow: hidden;
-  }
-  section div p {
-    font-size: small;
-    text-align: justify;
-    margin: 0px 10px;
-  }
-</style>
 </head>
 
 <body>
@@ -70,6 +26,30 @@
 </header>
 
 <h2>Description of the Area</h2>
+
+<map name="oldLawrence">
+  <area href="../images/bowersockDam-1.jpg" shape="rect" coords="175,4,192,52" target="photo" alt="Dam and Hydroelectric" title="Dam and Hydroelectric">
+  <area href="../images/downtownView.jpg" shape="poly" coords="136,85,136,235,198,235,198,175,225,97,225,65,195,50" target="photo" alt="Downtown Lawrence" title="Downtown Lawrence">
+  <area href="../images/eastLawrence-1.jpg" shape="poly" coords="199,170,199,350,280,350,280,185,225,107" target="photo" alt="East Lawrence Residential" title="East Lawrence Residential">
+  <area href="../images/industrialPark-1.jpg" shape="poly" coords="225,95,295,200,295,240,355,225,355,100,250,85" target="photo" alt="East Lawrence Industrial" title="East Lawrence Industrial">
+  <area href="../images/oldWestLawrence.jpg" shape="poly" coords="6,0,6,217,66,217,66,279,101,279,101,350,135,350,135,70,80,0" target="photo" alt="Old West Lawrence" title="Old West Lawrence">
+  <area href="../images/kansasUniv.jpg" shape="poly" coords="0,218,0,330,100,330,100,280,65,280,65,218" target="photo" alt="University of Kansas" title="University of Kansas">
+</map>
+
+<section id="grid">
+  <div class="center">
+    <img class="street-map" src="../images/lawrenceMap.jpg" alt="Map of Old Part of Lawrence" usemap="#oldLawrence">
+  </div>
+  <div class="center">
+    <iframe name="photo" src="../images/downtownView.jpg"></iframe>
+  </div>
+  <div>
+    <p>The street map above contains six regions surrounded by hidden boundary lines: Dam and Hydroelectric, Downtown Lawrence, East Lawrence Residential, East Lawrence Industrial, Old West Lawrence, and University of Kansas.</p>
+  </div>
+  <div>
+    <p>Moving the cursor from outside to inside one of those regions generates a pop-up box that identifies the region just entered. Clicking within any region displays a representative image in the frame above.</p>
+  </div>
+</section>
 
 <map name="oldLawrence">
   <area href="../images/bowersockDam-1.jpg" shape="rect" coords="175,4,192,52" target="photo" alt="Dam and Hydroelectric" title="Dam and Hydroelectric">
