@@ -19,6 +19,18 @@ nav ul {
     background-color: #f4e7d3; 
 }
 
+nav a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+    display: block;
+    padding: 5px 0;
+}
+
+nav a:hover {
+    color: #d35400;
+    text-decoration: underline;
+}
 aside { 
     display: none; 
 }
