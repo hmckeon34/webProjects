@@ -1,0 +1,32 @@
+/* --- Base Styles (Mobile) --- */
+body { font-family: Arial, sans-serif; margin: 0; }
+#wrapper { width: 100%; margin: auto; }
+#banner { width: 100%; height: auto; }
+nav ul { list-style-type: none; padding: 10px; background-color: #f4e7d3; }
+aside { display: none; } /* Rules stay hidden on small screens */
+
+/* --- 2nd Media Query: Medium Screens (Tablets) --- */
+@media screen and (min-width: 600px) {
+    body { background-color: #fdfaf3; }
+    /* The book suggests filtering for tablets here */
+}
+
+/* --- 3rd Media Query: Large Screens (Desktops) --- */
+@media screen and (min-width: 1024px) {
+    aside { display: block; background-color: #ffffff; padding: 10px; }
+    
+    #wrapper {
+        display: grid;
+        grid-template-columns: 200px 1fr 250px; /* nav | main | aside */
+        grid-template-areas: 
+            "header header header"
+            "nav    main   aside"
+            "footer footer footer";
+    }
+
+    header { grid-area: header; }
+    nav    { grid-area: nav; text-align: left; }
+    main   { grid-area: main; padding: 20px; }
+    aside  { grid-area: aside; border-left: 1px solid #ccc; }
+    footer { grid-area: footer; text-align: center; padding: 10px; }
+}
