@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'MyCursiveFont';
+    src: url('fonts/fontname.woff') format('woff'),
+         url('fonts/fontname.ttf') format('truetype');
+}
+
+#sentenceDisplay {
+    font-family: 'MyCursiveFont', cursive;
+    font-size: 2em;
+    color: #cc0000;
+    margin-top: 20px;
+}
+
+#wordInput {
+    margin-left: 5px;
+}
