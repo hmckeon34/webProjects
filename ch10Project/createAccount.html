@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; line-height: 1.6; }
+        h1 { margin-bottom: 10px; }
+        p { margin-bottom: 20px; max-width: 800px; }
+        
+        form { display: grid; grid-template-columns: 150px 300px; gap: 10px; align-items: start; }
+        label { text-align: right; padding-right: 15px; font-weight: normal; }
+        
+        input:invalid, select:invalid { background-color: pink; }
+        input:valid, select:valid { background-color: lightgreen; }
+
+        select { height: 160px; }
+
+        .button-row { grid-column: 2; margin-top: 15px; }
+        button { margin-right: 5px; cursor: pointer; }
+
+        #displayArea { margin-top: 25px; border-top: 1px solid #333; padding-top: 15px; }
+        .review-header { font-weight: bold; font-size: 1.2em; margin-bottom: 5px; }
+        .entry-line { margin: 2px 0; }
+    </style>
+</head>
+<body>
+
+    <h1>Create an Account</h1>
+    <p>All fields are required. Enter appropriate values in the text boxes. Select one or more security questions. Then click the Done button to review your choices.</p>
+
+    <form id="accountForm">
+        <label for="fullName">Full name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+
+        <label for="userName">Username:</label>
+        <input type="text" id="userName" name="userName" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="email">Email address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone number:</label>
+        <input type="tel" id="phone" name="phone" 
+               placeholder="123-456-7890" 
+               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+        <label for="questions">Security questions:</label>
+        <select id="questions" name="questions" multiple required>
+            <option>At what age did your childhood pet run away?</option>
+            <option>What was the name of your favorite unpaid internship?</option>
+            <option>What is the maiden name of your best friend's maternal grandmother?</option>
+            <option>What is the name of your favorite canceled TV show?</option>
+            <option>On what street did you lose your childlike sense of wonder?</option>
+            <option>What are you wearing?</option>
+            <option>What sports team do you fetishize to avoid meaningful discussion with others?</option>
+            <option>In what year did you stop trying?</option>
+        </select>
+
+        <div class="button-row">
+            <button type="button" id="doneBtn">Done</button>
+            <button type="reset" id="resetBtn">Reset</button>
+        </div>
+    </form>
+
+    <div id="displayArea"></div>
+
+    <script>
+        const form = document.getElementById('accountForm');
+        const display = document.getElementById('displayArea');
+        const doneBtn = document.getElementById('doneBtn');
+        const resetBtn = document.getElementById('resetBtn');
+
+        doneBtn.addEventListener('click', () => {
+            if (form.checkValidity()) {
+                let resultHtml = '<div class="review-header">Review your entries:</div>';
+                resultHtml += `<div class="entry-line">Name: ${form.fullName.value}</div>`;
+                resultHtml += `<div class="entry-line">Username: ${form.userName.value}</div>`;
+                resultHtml += `<div class="entry-line">Password: ${form.password.value}</div>`;
+                resultHtml += `<div class="entry-line">Email address: ${form.email.value}</div>`;
+                resultHtml += `<div class="entry-line">Phone number: ${form.phone.value}</div>`;
+                resultHtml += `<div class="entry-line"><strong>Security questions:</strong></div>`;
+                
+                const selected = Array.from(form.questions.selectedOptions).map(opt => opt.text);
+                selected.forEach(q => {
+                    resultHtml += `<div class="entry-line">${q}</div>`;
+                });
+
+                display.innerHTML = resultHtml;
+            } else {
+                display.innerHTML = "<strong>Invalid input.</strong>";
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            display.innerHTML = "";
+        });
+    </script>
+</body>
+</html>
