@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPG Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .instruction {
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+        .form-row {
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            width: 250px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 150px;
+            padding: 2px;
+        }
+        #mpgDisplay:disabled {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Miles Per Gallon Calculator</h1>
+
+    <div class="instruction">
+        The next two times you go to the gas station, fill up your tank completely and record your 
+        odometer's mileage values. At the second fill-up, record the number of gallons purchased. 
+        Then enter your three recorded values below and click the <em>Calculate</em> button.
+    </div>
+
+    <form id="mpgForm">
+        <div class="form-row">
+            <label for="miles1">First odometer reading (in miles):</label>
+            <input type="number" id="miles1" min="0" max="400000" step="1">
+        </div>
+
+        <div class="form-row">
+            <label for="miles2">Second odometer reading (in miles):</label>
+            <input type="number" id="miles2" min="0" max="400000" step="1">
+        </div>
+
+        <div class="form-row">
+            <label for="gallons">Gallons:</label>
+            <input type="number" id="gallons" min="0.1" max="40" step="0.1">
+        </div>
+
+        <div class="form-row">
+            <label for="mpgDisplay">Calculated MPG:</label>
+            <input type="text" id="mpgDisplay" disabled>
+        </div>
+
+        <div class="buttons">
+            <input type="button" value="Calculate" onclick="calculateMPG()">
+            <input type="reset" value="Reset" onclick="resetForm()">
+        </div>
+    </form>
+
+    <script>
+        function calculateMPG() {
+            const miles1Input = document.getElementById('miles1');
+            const miles2Input = document.getElementById('miles2');
+            const gallonsInput = document.getElementById('gallons');
+            const mpgDisplay = document.getElementById('mpgDisplay');
+
+            const m1 = parseFloat(miles1Input.value);
+            const m2 = parseFloat(miles2Input.value);
+            const gal = parseFloat(gallonsInput.value);
+
+            const mMin = parseFloat(miles1Input.min);
+            const mMax = parseFloat(miles1Input.max);
+            const gMin = parseFloat(gallonsInput.min);
+            const gMax = parseFloat(gallonsInput.max);
+
+            let errors = [];
+
+            if (isNaN(m1) || m1 < mMin || m1 > mMax || !Number.isInteger(m1)) {
+                errors.push(`Invalid entry for the first odometer reading. Must be an integer between ${mMin} and ${mMax}.`);
+            }
+            
+            if (isNaN(m2) || m2 < mMin || m2 > mMax || !Number.isInteger(m2)) {
+                errors.push(`Invalid entry for the second odometer reading. Must be an integer between ${mMin} and ${mMax}.`);
+            }
+
+            const decimalCheck = gallonsInput.value.split('.')[1];
+            if (isNaN(gal) || gal < gMin || gal > gMax || (decimalCheck && decimalCheck.length > 1)) {
+                errors.push(`Invalid entry for gallons. Must be between ${gMin} and ${gMax} with a maximum of one decimal place.`);
+            }
+
+            if (!isNaN(m1) && !isNaN(m2) && m1 > m2) {
+                errors.push("Invalid odometer entries. The first value cannot be greater than the second value.");
+            }
+
+            if (errors.length > 0) {
+                mpgDisplay.value = "";
+                alert(errors.join("\n\n"));
+            } else {
+                const mpg = (m2 - m1) / gal;
+                mpgDisplay.value = mpg.toFixed(1);
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('mpgDisplay').value = "";
+        }
+    </script>
+</body>
+</html>
